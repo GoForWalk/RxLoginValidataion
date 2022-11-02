@@ -38,11 +38,11 @@ extension Endpoint {
         }
     }
     
-    var params: [String: String] {
+    var params: [String: Any] {
         switch self {
         case .signup(let nickName, let email, let password):
             return [
-                "nickName": "\(nickName)",
+                "userName": "\(nickName)",
                 "email": "\(email)",
                 "password": "\(password)"
             ]

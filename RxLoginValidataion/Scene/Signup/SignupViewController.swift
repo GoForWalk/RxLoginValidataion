@@ -11,9 +11,9 @@ import RxCocoa
 
 final class SignupViewController: BaseViewContoller {
 
-    let signupView = SignupView()
-    var viewModel = SignupViewModel()
-    
+    private let signupView = SignupView()
+    private var viewModel = SignupViewModel()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = signupView
@@ -35,7 +35,41 @@ final class SignupViewController: BaseViewContoller {
         
         let output = viewModel.transform(input)
         
+        output.nickNameValidate
+            .asDriver(onErrorJustReturn: false)
+            .drive(with: signupView.emailTextField) { textField, bool in
+                textField.isHidden = !bool
+            }
+            .disposed(by: disposeBag)
         
+        output.emailValidate
+            .asDriver(onErrorJustReturn: false)
+            .drive(with: signupView.passwordTextField) { textField, bool in
+                textField.isHidden = !bool
+            }
+            .disposed(by: disposeBag)
+        
+        output.passwordValidate
+            .asDriver(onErrorJustReturn: false)
+            .drive(with: signupView.postButton) { button, bool in
+                button.isHidden = !bool
+            }
+            .disposed(by: disposeBag)
+        
+        output.nicknameVaildateMsg
+            .asDriver(onErrorJustReturn: "")
+            .drive(signupView.nickNameValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.emailValidateMsg
+            .asDriver(onErrorJustReturn: "")
+            .drive(signupView.emailValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.passwordValidateMsg
+            .asDriver(onErrorJustReturn: "")
+            .drive(signupView.passwordValidationLabel.rx.text)
+            .disposed(by: disposeBag)
         
         
     }

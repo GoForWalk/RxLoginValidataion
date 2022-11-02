@@ -22,15 +22,19 @@ final class SignupViewModel: ViewModelType {
     }
     
     struct Output {
-        let nicknameVaildate: BehaviorRelay<Bool>
-        let emailValidate: BehaviorRelay<Bool>
-        let passwordValidate: BehaviorRelay<Bool>
-        let postButtonValidate: BehaviorRelay<Bool>
+        let nicknameVaildateMsg = BehaviorRelay<String>(value: "")
+        let emailValidateMsg = BehaviorRelay<String>(value: "")
+        let passwordValidateMsg = BehaviorRelay<String>(value: "")
+        
+        let nickNameValidate = BehaviorRelay<Bool>(value: false)
+        let emailValidate = BehaviorRelay<Bool>(value: false)
+        let passwordValidate = BehaviorRelay<Bool>(value: false)
+        let postButtonValidate = BehaviorRelay<Bool>(value: false)
     }
     
     func transform(_ input: Input) -> Output {
         self.configureInput(input, disposeBag: disposeBag)
-        return createOutput(input: input, disposeBag: disposeBag)
+        return returnOutput(input: input, disposeBag: disposeBag)
     }
     
     private func configureInput(_ input: Input, disposeBag: DisposeBag) {
@@ -42,21 +46,73 @@ final class SignupViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
             
-            
         input.email.orEmpty
-            
-        
+            .withUnretained(self)
+            .subscribe {
+                $0.signupUseCase.emailValidate(email: $1)
+            }
+            .disposed(by: disposeBag)
         
         input.password.orEmpty
+            .withUnretained(self)
+            .subscribe {
+                $0.signupUseCase.passwordValidate(password: $1)
+            }
+            .disposed(by: disposeBag)
         
-        input.postButton.
+        input.postButton
+            .withUnretained(self)
+            .subscribe { [weak self] _ in
+                self?.signupUseCase.signupAccount()
+            }
+            .disposed(by: disposeBag)
     }
     
-    private func createOutput(input: Input, disposeBag: DisposeBag) -> Output {
+    private func returnOutput(input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
+        self.signupUseCase.nickNameVaildation
+            .subscribe { bool in
+                output.nickNameValidate.accept(bool)
+
+                if !bool {
+                    output.nicknameVaildateMsg.accept("닉네임을 입력해 주세요.")
+                } else {
+                    output.nicknameVaildateMsg.accept("")
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        self.signupUseCase.emailValidation
+            .subscribe { bool in
+                output.emailValidate.accept(bool)
+                
+                if !bool {
+                    output.emailValidateMsg.accept("이메일을 다시 확인해주세요.")
+                } else {
+                    output.emailValidateMsg.accept("")
+                }
+            }
+            .disposed(by: disposeBag)
+
+        self.signupUseCase.passwordVaildation
+            .subscribe { bool in
+                output.passwordValidate.accept(bool)
+
+                if !bool {
+                    output.passwordValidateMsg.accept("8자 이상 입력해주세요.")
+                } else {
+                    output.passwordValidateMsg.accept("")
+                }
+            }
+            .disposed(by: disposeBag)
         
         
+//        self.signupUseCase.signupErrorState
+//            .subscribe { validationState in
+//
+//            }
+//            .disposed(by: disposeBag)
         
         return output
     }
