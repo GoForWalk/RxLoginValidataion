@@ -63,7 +63,9 @@ final class SignupUseCase {
     
     func nickNameValidate(nickName: String) {
         
-        guard nickName.count > 0 else { return }
+        guard nickName.count > 0 else {
+            nickNameVaildation.onNext(false)
+            return }
         
         self.nickName = nickName
         nickNameVaildation.onNext(true)
@@ -83,6 +85,7 @@ final class SignupUseCase {
     func passwordValidate(password: String) {
         
         guard password.count > 7 else {
+            passwordVaildation.onNext(false)
             return
         }
         
