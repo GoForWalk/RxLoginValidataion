@@ -6,12 +6,14 @@
 //
 
 import Foundation
+
 import RxSwift
 import RxCocoa
 
 final class SignupViewModel: ViewModelType {
     
     private let signupUseCase = SignupUseCase()
+    
     private let disposeBag = DisposeBag()
     
     struct Input {
@@ -107,7 +109,7 @@ final class SignupViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        
+        // TODO: 에러뷰 띄우기
 //        self.signupUseCase.signupErrorState
 //            .subscribe { validationState in
 //

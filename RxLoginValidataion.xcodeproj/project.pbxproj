@@ -26,6 +26,12 @@
 		CFAD7D4B2912AF11004EDE3A /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAD7D4A2912AF11004EDE3A /* SignupViewModel.swift */; };
 		CFAD7D4D2912AF49004EDE3A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAD7D4C2912AF49004EDE3A /* ViewModelType.swift */; };
 		CFAD7D502912B04D004EDE3A /* SignupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAD7D4F2912B04D004EDE3A /* SignupUseCase.swift */; };
+		CFE9549B2914119B00591FC9 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9549A2914119B00591FC9 /* HTTPHeader.swift */; };
+		CFE9549D291423C400591FC9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9549C291423C400591FC9 /* UserDefaultsKey.swift */; };
+		CFE9549F291433E100591FC9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9549E291433E100591FC9 /* LoginViewModel.swift */; };
+		CFE954A1291568C300591FC9 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE954A0291568C300591FC9 /* LoginUseCase.swift */; };
+		CFE954A3291568E800591FC9 /* SignupValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE954A2291568E800591FC9 /* SignupValidationState.swift */; };
+		CFE954A72915A6D900591FC9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CFE954A62915A6D900591FC9 /* Toast */; };
 		CFF7221E291244B300FB0647 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF7221D291244B300FB0647 /* AppDelegate.swift */; };
 		CFF72220291244B300FB0647 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF7221F291244B300FB0647 /* SceneDelegate.swift */; };
 		CFF72227291244B400FB0647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF72226291244B400FB0647 /* Assets.xcassets */; };
@@ -50,6 +56,12 @@
 		CFAD7D4A2912AF11004EDE3A /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		CFAD7D4C2912AF49004EDE3A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		CFAD7D4F2912B04D004EDE3A /* SignupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUseCase.swift; sourceTree = "<group>"; };
+		CFE954972913698D00591FC9 /* ReadME.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadME.md; sourceTree = "<group>"; };
+		CFE9549A2914119B00591FC9 /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
+		CFE9549C291423C400591FC9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		CFE9549E291433E100591FC9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CFE954A0291568C300591FC9 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		CFE954A2291568E800591FC9 /* SignupValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupValidationState.swift; sourceTree = "<group>"; };
 		CFF7221A291244B300FB0647 /* RxLoginValidataion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLoginValidataion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF7221D291244B300FB0647 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFF7221F291244B300FB0647 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE954A72915A6D900591FC9 /* Toast in Frameworks */,
 				CFAD7D3E2912AC57004EDE3A /* RxSwift in Frameworks */,
 				CFAD7D3C2912AC57004EDE3A /* RxCocoa in Frameworks */,
 				CFAD7D31291280A4004EDE3A /* SnapKit in Frameworks */,
@@ -77,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				CF9FA7DA2912B64300D12CA7 /* ColorConstant.swift */,
+				CFE9549C291423C400591FC9 /* UserDefaultsKey.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -93,9 +107,9 @@
 		CFAD7D2829125F1A004EDE3A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CFE9549929140EF800591FC9 /* Network */,
 				CF9FA7D92912B62600D12CA7 /* Constants */,
 				CFAD7D3229128168004EDE3A /* Base */,
-				CFAD7D2929125F3F004EDE3A /* HTTPMethod.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -146,6 +160,7 @@
 		CFAD7D482912AE67004EDE3A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CFE9549E291433E100591FC9 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -162,13 +177,33 @@
 			isa = PBXGroup;
 			children = (
 				CFAD7D4F2912B04D004EDE3A /* SignupUseCase.swift */,
+				CFE954A0291568C300591FC9 /* LoginUseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		CFE9549929140EF800591FC9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CFE954A42915690300591FC9 /* Error */,
+				CFAD7D2929125F3F004EDE3A /* HTTPMethod.swift */,
+				CFE9549A2914119B00591FC9 /* HTTPHeader.swift */,
+				CFE954A2291568E800591FC9 /* SignupValidationState.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CFE954A42915690300591FC9 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		CFF72211291244B300FB0647 = {
 			isa = PBXGroup;
 			children = (
+				CFE954972913698D00591FC9 /* ReadME.md */,
 				CFF7221C291244B300FB0647 /* RxLoginValidataion */,
 				CFF7221B291244B300FB0647 /* Products */,
 			);
@@ -266,6 +301,7 @@
 				CFAD7D30291280A4004EDE3A /* SnapKit */,
 				CFAD7D3B2912AC57004EDE3A /* RxCocoa */,
 				CFAD7D3D2912AC57004EDE3A /* RxSwift */,
+				CFE954A62915A6D900591FC9 /* Toast */,
 			);
 			productName = RxLoginValidataion;
 			productReference = CFF7221A291244B300FB0647 /* RxLoginValidataion.app */;
@@ -298,6 +334,7 @@
 			packageReferences = (
 				CFAD7D2F291280A4004EDE3A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CFAD7D3A2912AC57004EDE3A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CFE954A52915A6D900591FC9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CFF7221B291244B300FB0647 /* Products */;
 			projectDirPath = "";
@@ -327,7 +364,9 @@
 			files = (
 				CFAD7D442912AE22004EDE3A /* profileView.swift in Sources */,
 				CFAD7D2C29128058004EDE3A /* SignupViewController.swift in Sources */,
+				CFE9549F291433E100591FC9 /* LoginViewModel.swift in Sources */,
 				CFAD7D4B2912AF11004EDE3A /* SignupViewModel.swift in Sources */,
+				CFE9549D291423C400591FC9 /* UserDefaultsKey.swift in Sources */,
 				CFAD7D2729125A6D004EDE3A /* ProfileVO.swift in Sources */,
 				CFAD7D2529125970004EDE3A /* TokenVO.swift in Sources */,
 				CFF7221E291244B300FB0647 /* AppDelegate.swift in Sources */,
@@ -337,9 +376,12 @@
 				CFF722382912471D00FB0647 /* APIService.swift in Sources */,
 				CFAD7D4D2912AF49004EDE3A /* ViewModelType.swift in Sources */,
 				CFF72220291244B300FB0647 /* SceneDelegate.swift in Sources */,
+				CFE9549B2914119B00591FC9 /* HTTPHeader.swift in Sources */,
 				CF9FA7DB2912B64300D12CA7 /* ColorConstant.swift in Sources */,
+				CFE954A3291568E800591FC9 /* SignupValidationState.swift in Sources */,
 				CFAD7D2E29128067004EDE3A /* SignupView.swift in Sources */,
 				CFAD7D502912B04D004EDE3A /* SignupUseCase.swift in Sources */,
+				CFE954A1291568C300591FC9 /* LoginUseCase.swift in Sources */,
 				CFAD7D37291283A3004EDE3A /* BaseView.swift in Sources */,
 				CFAD7D462912AE30004EDE3A /* ProfileViewController.swift in Sources */,
 				CFAD7D422912ACB3004EDE3A /* LoginViewController.swift in Sources */,
@@ -566,6 +608,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		CFE954A52915A6D900591FC9 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -583,6 +633,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CFAD7D3A2912AC57004EDE3A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		CFE954A62915A6D900591FC9 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFE954A52915A6D900591FC9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

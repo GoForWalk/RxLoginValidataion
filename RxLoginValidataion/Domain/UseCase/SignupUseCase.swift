@@ -10,30 +10,6 @@ import Foundation
 import RxSwift
 import RxRelay
 
-enum SignupValidationState {
-    case empty
-    case emailError
-    case nicknameError
-    case passwordError
-    case haveEmail
-}
-
-extension SignupValidationState {
-    var errorDescription: String {
-        switch self {
-        case .empty:
-            return "비어있는 값이 있습니다."
-        case .emailError:
-            return "이메일을 다시 한번 확인해 주세요."
-        case .nicknameError:
-            return "닉네임을 다시 한번 확인해 주세요."
-        case .passwordError:
-            return "비밀번호를 다시 한번 확인해 주세요."
-        case .haveEmail:
-            return "이미 가입된 이메일 입니다."
-        }
-    }
-}
 
 final class SignupUseCase {
     
@@ -41,14 +17,13 @@ final class SignupUseCase {
     
     let signupErrorState = BehaviorSubject<SignupValidationState>(value: .empty)
     
-    var nickName: String?
-    var email: String?
-    var password: String?
+    private var nickName: String?
+    private var email: String?
+    private var password: String?
     
     let nickNameVaildation = BehaviorSubject(value: false)
     let emailValidation = BehaviorSubject(value: false)
     let passwordVaildation = BehaviorSubject(value: false)
-
     
     private let disposeBag = DisposeBag()
     

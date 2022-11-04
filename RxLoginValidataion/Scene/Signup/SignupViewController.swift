@@ -12,6 +12,7 @@ import RxCocoa
 final class SignupViewController: BaseViewContoller {
 
     private let signupView = SignupView()
+    //프로토콜은 추상화 하는 형태로 사용 하시고, init로 뷰모델 주입해보시면
     private var viewModel = SignupViewModel()
     private let disposeBag = DisposeBag()
     
